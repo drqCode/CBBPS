@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="BranchPredictionSimulator.Chart"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="250" Width="172">
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="AxesBrush" Color="Black"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="17" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="17" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="17" />
+        </Grid.ColumnDefinitions>
+
+        
+        <!--axa orizontala-->
+        <Rectangle Fill="{StaticResource AxesBrush}" Grid.Row="1" Grid.Column="1" Height="2" 
+                   VerticalAlignment="Bottom" HorizontalAlignment="Stretch"/>
+        <Polygon Grid.Row="1" Grid.Column="2" Margin="0, 0, 0, -4"
+                 VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                 Fill="{StaticResource AxesBrush}">
+            <Polygon.Points>
+                <PointCollection>
+                    <Point X="0" Y="0"/>
+                    <Point X="0" Y="10"/>
+                    <Point X="12" Y="5"/>
+                </PointCollection>
+            </Polygon.Points>
+        </Polygon>
+
+        <!--axa orizontala-->
+        <Rectangle Fill="{StaticResource AxesBrush}" Grid.Row="1" Grid.Column="1" Width="2" 
+                   VerticalAlignment="Stretch" HorizontalAlignment="Left" Margin="-1, 0, 0, 0"/>
+        <Polygon Grid.Row="0" Grid.Column="1" 
+                 VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="-5, 0, 0, 0"
+                 Fill="{StaticResource AxesBrush}">
+            <Polygon.Points>
+                <PointCollection>
+                    <Point X="5" Y="0"/>
+                    <Point X="0" Y="12"/>
+                    <Point X="10" Y="12"/>
+                </PointCollection>
+            </Polygon.Points>
+        </Polygon>
+
+        <Grid x:Name="DataContainer" 
+              Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"
+              Margin="0, 0, 0, 10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="45"/>
+            </Grid.RowDefinitions>
+        </Grid>
+        
+        <Canvas x:Name="LevelLineContainer"
+                Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1"
+                Margin="7, 0, 10, 0"
+                IsHitTestVisible="True"
+                Background="Transparent"
+                MouseMove="LevelLineContainer_MouseMove"
+                MouseEnter="LevelLineContainer_MouseEnter"
+                MouseLeave="LevelLineContainer_MouseLeave">
+            <Rectangle x:Name="LevelLine"
+                       Canvas.Left="0"
+                       Canvas.Top="50"
+                       Width="{Binding ElementName=LevelLineContainer, Path=ActualWidth}"
+                       Height="2"
+                       Fill="Blue"/>
+            <Border x:Name="LevelTextBorder" Padding="3, 0, 3, 0"
+                    Background="White" CornerRadius="3"
+                    BorderThickness="1" BorderBrush="Blue">
+                <TextBlock x:Name="LevelText" Text="?? %" Foreground="Blue"/>
+            </Border>            
+                  
+        </Canvas>
+
+    </Grid>
+</UserControl>

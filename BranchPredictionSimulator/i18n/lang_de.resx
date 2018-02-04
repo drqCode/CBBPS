@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About_Header" xml:space="preserve">
+    <value>Über</value>
+  </data>
+  <data name="About_Text" xml:space="preserve">
+    <value>{0}, Version {1}.{2}
+
+{3}</value>
+  </data>
+  <data name="AppOptions" xml:space="preserve">
+    <value>Anwendungsoptionen</value>
+  </data>
+  <data name="AppOpt_Browse" xml:space="preserve">
+    <value>Blättern</value>
+  </data>
+  <data name="AppOpt_PredictorComparison" xml:space="preserve">
+    <value>Prädiktoren vergleichen</value>
+  </data>
+  <data name="AppOpt_ShowAM" xml:space="preserve">
+    <value>Das aritmetische Mittel in Tabellen anzeigen</value>
+  </data>
+  <data name="AppOpt_ShowGM" xml:space="preserve">
+    <value>Das geometrische Mittel in Tabellen anzeigen</value>
+  </data>
+  <data name="AppOpt_ShowHM" xml:space="preserve">
+    <value>Das harmonische Mittel in Tabellen anzeigen</value>
+  </data>
+  <data name="AppOpt_ShowLine" xml:space="preserve">
+    <value>Horizontale Messlinie in Tabellen anzeigen</value>
+  </data>
+  <data name="AppOpt_TraceFolderPath" xml:space="preserve">
+    <value>Trace Folder Path</value>
+  </data>
+  <data name="App_Title" xml:space="preserve">
+    <value>"Kristallkugel" Sprungvorhersagesimulation</value>
+  </data>
+  <data name="Bias_CreateLog" xml:space="preserve">
+    <value>Log schaffen</value>
+  </data>
+  <data name="Bias_OnlyIncludeUnbiasedBranchesInLog" xml:space="preserve">
+    <value>Schreibe nur die polarisierte Sprünge im Log</value>
+  </data>
+  <data name="Bias_UnbiasedContextOrder" xml:space="preserve">
+    <value>Contextorden der polarisierte Sprünge</value>
+  </data>
+  <data name="Bias_UnbiasedGlobalHistoryLength" xml:space="preserve">
+    <value>Länge der globalen Vorhergeschichte für polarisierte Sprünge</value>
+  </data>
+  <data name="Bias_UnbiasedLocalHistoryLength" xml:space="preserve">
+    <value>Länge der lokalen Vorhergeschichte für polarisierte Sprünge</value>
+  </data>
+  <data name="Bias_UnbiasedPathLength" xml:space="preserve">
+    <value>Länge des Pfades für polarisierte Sprünge</value>
+  </data>
+  <data name="Bias_UnbiasedPolarisation" xml:space="preserve">
+    <value>Polarisation der polarisierte Sprünge</value>
+  </data>
+  <data name="Bias_UnbiasedShuffleCheck" xml:space="preserve">
+    <value>Michungsprüfung der polarisierte Sprünge</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Fehler</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
+  <data name="Language_English" xml:space="preserve">
+    <value>Englisch</value>
+  </data>
+  <data name="Language_German" xml:space="preserve">
+    <value>Deutsch</value>
+  </data>
+  <data name="Language_Romanian" xml:space="preserve">
+    <value>Rumänisch</value>
+  </data>
+  <data name="MainWindow_Abort" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="MainWindow_Charts" xml:space="preserve">
+    <value>Tabellen</value>
+  </data>
+  <data name="MainWindow_ClearResults" xml:space="preserve">
+    <value>Ergebnisse löschen</value>
+  </data>
+  <data name="MainWindow_Predictors" xml:space="preserve">
+    <value>Prädiktoren:</value>
+  </data>
+  <data name="MainWindow_Results" xml:space="preserve">
+    <value>Ergebnisse</value>
+  </data>
+  <data name="MainWindow_SaveResults" xml:space="preserve">
+    <value>Ergebnisse speichern:</value>
+  </data>
+  <data name="MainWindow_SelectAll" xml:space="preserve">
+    <value>Alle wählen</value>
+  </data>
+  <data name="MainWindow_SelectNone" xml:space="preserve">
+    <value>Keine wählen</value>
+  </data>
+  <data name="MainWindow_Simulate" xml:space="preserve">
+    <value>Simulieren</value>
+  </data>
+  <data name="MainWindow_ToExcel2007" xml:space="preserve">
+    <value>im Excel 2007 Format</value>
+  </data>
+  <data name="MainWindow_ToText" xml:space="preserve">
+    <value>im Textformat</value>
+  </data>
+  <data name="Menu_About" xml:space="preserve">
+    <value>Über</value>
+  </data>
+  <data name="Menu_Excel" xml:space="preserve">
+    <value>Exportare în format Excel 2007</value>
+  </data>
+  <data name="Menu_Exit" xml:space="preserve">
+    <value>Schließ es!</value>
+  </data>
+  <data name="Menu_File" xml:space="preserve">
+    <value>Anwendung</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>Hilfe</value>
+  </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>Optionen</value>
+  </data>
+  <data name="Menu_TCP" xml:space="preserve">
+    <value>TCP Verbindungen</value>
+  </data>
+  <data name="Options_Window_Title" xml:space="preserve">
+    <value>Optionen</value>
+  </data>
+  <data name="SimOptions" xml:space="preserve">
+    <value>Simulationsoptionen</value>
+  </data>
+  <data name="SimOpt_BiasedOnly" xml:space="preserve">
+    <value>Nur polarisierte Sprünge simulieren</value>
+  </data>
+  <data name="SimOpt_ConditionalOnly" xml:space="preserve">
+    <value>Nur konditionelle Sprünge simulieren</value>
+  </data>
+  <data name="SimOpt_RemoteOnly" xml:space="preserve">
+    <value>Nur im Netzwerk simulieren</value>
+  </data>
+  <data name="SimOpt_SkipFirst1" xml:space="preserve">
+    <value>Die ersten</value>
+  </data>
+  <data name="SimOpt_SkipFirst2" xml:space="preserve">
+    <value>Instruktionen überspringen.</value>
+  </data>
+  <data name="SimOpt_UnbiasedOnly" xml:space="preserve">
+    <value>Nur polarisierte Sprünge simulieren</value>
+  </data>
+  <data name="TCP_Add" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="TCP_AddTCPConnection" xml:space="preserve">
+    <value>TCP Verbindung hinzufügen</value>
+  </data>
+  <data name="TCP_Connect" xml:space="preserve">
+    <value>Verbinden</value>
+  </data>
+  <data name="TCP_ConnectAll" xml:space="preserve">
+    <value>Alles verbinden</value>
+  </data>
+  <data name="TCP_Connected" xml:space="preserve">
+    <value>verbunden</value>
+  </data>
+  <data name="TCP_Delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="TCP_Disconnect" xml:space="preserve">
+    <value>Trennen</value>
+  </data>
+  <data name="TCP_Disconnected" xml:space="preserve">
+    <value>nicht verbunden</value>
+  </data>
+  <data name="TCP_Hostname" xml:space="preserve">
+    <value>Hostname:</value>
+  </data>
+  <data name="TCP_Messages" xml:space="preserve">
+    <value>Meldungen</value>
+  </data>
+  <data name="TCP_Port" xml:space="preserve">
+    <value>Port:</value>
+  </data>
+  <data name="TCP_Status" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="TCP_WindowTitle" xml:space="preserve">
+    <value>TCP Verbindungen</value>
+  </data>
+</root>
