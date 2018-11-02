@@ -8,5 +8,6 @@ namespace PredictionLogic.Prediction
     {
         BranchInfo getBranchInfo();
         bool taken();
+        uint getTargetAddress();
     }
 }

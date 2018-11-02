@@ -38,6 +38,10 @@ namespace PredictionLogic.Prediction.BenchmarksAndReaders.Stanford
             try
             {
                 String line = streamReader.ReadLine();
+                if (line == null)
+                {
+                    return null;
+                }
                 string[] splitLine = line.Split(new char[] { ' ' });
                 if (splitLine.Length < 3)
                 {

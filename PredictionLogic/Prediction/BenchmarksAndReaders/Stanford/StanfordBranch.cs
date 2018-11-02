@@ -26,6 +26,11 @@ namespace PredictionLogic.Prediction.BenchmarksAndReaders.Stanford
             return branchTaken;
         }
 
+        public uint getTargetAddress()
+        {
+            return targetAddress;
+        }
+
         #endregion
     }
 }

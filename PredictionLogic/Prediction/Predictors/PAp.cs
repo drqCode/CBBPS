@@ -30,7 +30,6 @@ namespace PredictionLogic.Prediction.Predictors
 
         struct LocalPatternHistoryTableEntry
         {
-            public byte tag;
             public ushort history;
             public sbyte[] globalPatternHistoryTable;
         };

@@ -98,8 +98,6 @@ namespace PredictionLogic.Prediction.Predictors
             this.initialThreshold = initialThreshold;
             this.threshold = initialThreshold;
 
-            sum = 0;
-
             thresholdAdaptCount = 0;
             if (thresholdAdaptBits != 0)
             {
@@ -250,7 +248,6 @@ namespace PredictionLogic.Prediction.Predictors
                 globalHistory[i] = 0;
             }
 
-            sum = 0;
             thresholdAdaptCount = 0;
             threshold = initialThreshold;
         }

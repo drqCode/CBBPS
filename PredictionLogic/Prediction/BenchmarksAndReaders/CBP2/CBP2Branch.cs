@@ -26,6 +26,11 @@ namespace PredictionLogic.Prediction.BenchmarksAndReaders.CBP2
             return branchTaken;
         }
 
+        public uint getTargetAddress()
+        {
+            return targetAddress;
+        }
+
         #endregion
     }
 }

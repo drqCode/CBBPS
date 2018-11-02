@@ -25,6 +25,12 @@ namespace PredictionLogic.Prediction.BenchmarksAndReaders.SPEC2000
             return branchTaken;
         }
 
+        public uint getTargetAddress()
+        {
+            // we have no other information here
+            return branchInfo.address;
+        }
+
         #endregion
     }
 }

@@ -85,6 +85,7 @@
     <Compile Include="Prediction\PredictorPropertyTypes\PredictorInt32Property.cs" />
     <Compile Include="Prediction\PredictorPropertyTypes\PredictorPropertyBase.cs" />
     <Compile Include="Prediction\PredictorPropertyTypes\PredictorUInt32Property.cs" />
+    <Compile Include="Prediction\Predictors\MTAGESC.cs" />
     <Compile Include="Prediction\Predictors\Perceptron.cs" />
     <Compile Include="Prediction\Predictors\OGEHL.cs" />
     <Compile Include="Prediction\Predictors\FixedPredictor.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Prediction\Predictors\SIP2.cs" />
     <Compile Include="Prediction\Predictors\SIP3.cs" />
     <Compile Include="Prediction\PredictorInfo.cs" />
+    <Compile Include="Prediction\Predictors\TAGE.cs" />
     <Compile Include="Prediction\PredictorTypeInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimulationStatistics\BenchmarkStatisticsResult.cs" />

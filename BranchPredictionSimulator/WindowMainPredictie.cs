@@ -70,6 +70,8 @@ namespace BranchPredictionSimulator
             predictorTypeList.Add(new PredictorTypeInfo(typeof(SIP2), "SIP2"));
             predictorTypeList.Add(new PredictorTypeInfo(typeof(SIP3), "SIP3"));
             predictorTypeList.Add(new PredictorTypeInfo(typeof(FixedPredictor), "Fixed Prediction"));
+            predictorTypeList.Add(new PredictorTypeInfo(typeof(MTAGESC), "MTAGE-SC"));
+            predictorTypeList.Add(new PredictorTypeInfo(typeof(TAGE), "TAGE"));
 
             PredictorTypesListBox.DataContext = predictorTypeList;
             PredictorTypesListBox.SelectedIndex = 0;
