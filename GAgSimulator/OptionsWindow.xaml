@@ -1,0 +1,51 @@
+﻿<Window x:Class="GAgSimulator.OptionsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sbp="clr-namespace:GAgSimulator"
+        xmlns:l="clr-namespace:GAgSimulator.Localization"
+        Title="{l:Text Options_Window_Title}" 
+        Height="118" Width="448" MinHeight="150" MinWidth="300">
+
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="CheckBox">
+            <Setter Property="FlowDirection" Value="RightToLeft"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+    </Window.Resources>
+
+
+    <GroupBox x:Name="GBAppOptions">
+        <StackPanel Orientation="Vertical" Margin="4">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{l:Text AppOpt_TraceFolderPath}" Margin="2, 0"/>
+                <TextBox x:Name="tb_TracePathMain" 
+                             Grid.Column="1" Margin="0, 0, 3, 0" MinWidth="100"
+                             IsEnabled="True" TextChanged="tb_TracePathMain_TextChanged"
+                             Text="{Binding TracePathMain}" />
+                <Button Grid.Column="2" Padding="2, 0"
+                            x:Name="btnBrowse" Click="btnBrowse_Click" 
+                            Content="{l:Text AppOpt_Browse}"/>
+            </Grid>
+
+            <CheckBox IsChecked="{Binding ShowAM}" VerticalAlignment="Center" Margin="0, 5, 0, 0"
+                          Content="{l:Text AppOpt_ShowAM}"/>
+            <CheckBox IsChecked="{Binding ShowLine}" VerticalAlignment="Center" Margin="0, 5, 0, 0"
+                          Content="{l:Text AppOpt_ShowLine}"/>
+
+        </StackPanel>
+    </GroupBox>
+</Window>

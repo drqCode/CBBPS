@@ -52,6 +52,9 @@
     <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -62,22 +65,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationOptions.cs" />
-    <Compile Include="CommunicationProtocol\ClientToServerDeserializationBinder.cs" />
-    <Compile Include="CommunicationProtocol\ResultPackage.cs" />
-    <Compile Include="CommunicationProtocol\TaskPackage.cs" />
-    <Compile Include="CommunicationProtocol\TrasmissionFlags.cs" />
     <Compile Include="ErrorNotifierAction.cs" />
     <Compile Include="ErrorNotifier.cs" />
     <Compile Include="Prediction\BenchmarksAndReaders\BenchmarkInfo.cs" />
-    <Compile Include="Prediction\BenchmarksAndReaders\BenchmarkType.cs" />
-    <Compile Include="Prediction\BenchmarksAndReaders\CBP2\CBP2Branch.cs" />
-    <Compile Include="Prediction\BenchmarksAndReaders\CBP2\CBP2ReaderBranch.cs" />
-    <Compile Include="Prediction\BenchmarksAndReaders\CBP2\CBP2Reader.cs" />
     <Compile Include="Prediction\IBranch.cs" />
     <Compile Include="Prediction\BenchmarksAndReaders\ITraceReader.cs" />
     <Compile Include="Prediction\BranchInfo.cs" />
-    <Compile Include="Prediction\BenchmarksAndReaders\SPEC2000\Spec2000Branch.cs" />
-    <Compile Include="Prediction\BenchmarksAndReaders\SPEC2000\Spec2000Reader.cs" />
     <Compile Include="Prediction\BenchmarksAndReaders\Stanford\StanfordBranch.cs" />
     <Compile Include="Prediction\BenchmarksAndReaders\Stanford\StanfordReader.cs" />
     <Compile Include="Prediction\IPredictor.cs" />
@@ -85,22 +78,8 @@
     <Compile Include="Prediction\PredictorPropertyTypes\PredictorInt32Property.cs" />
     <Compile Include="Prediction\PredictorPropertyTypes\PredictorPropertyBase.cs" />
     <Compile Include="Prediction\PredictorPropertyTypes\PredictorUInt32Property.cs" />
-    <Compile Include="Prediction\Predictors\MTAGESC.cs" />
-    <Compile Include="Prediction\Predictors\Perceptron.cs" />
-    <Compile Include="Prediction\Predictors\OGEHL.cs" />
-    <Compile Include="Prediction\Predictors\FixedPredictor.cs" />
-    <Compile Include="Prediction\Predictors\FPBNP.cs" />
-    <Compile Include="Prediction\Predictors\GAg.cs" />
-    <Compile Include="Prediction\Predictors\GShare.cs" />
-    <Compile Include="Prediction\Predictors\LGShare.cs" />
-    <Compile Include="Prediction\Predictors\PAg.cs" />
-    <Compile Include="Prediction\Predictors\PAp.cs" />
-    <Compile Include="Prediction\Predictors\Piecewise.cs" />
-    <Compile Include="Prediction\Predictors\SIP1.cs" />
-    <Compile Include="Prediction\Predictors\SIP2.cs" />
-    <Compile Include="Prediction\Predictors\SIP3.cs" />
+    <Compile Include="Prediction\GAg.cs" />
     <Compile Include="Prediction\PredictorInfo.cs" />
-    <Compile Include="Prediction\Predictors\TAGE.cs" />
     <Compile Include="Prediction\PredictorTypeInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimulationStatistics\BenchmarkStatisticsResult.cs" />
@@ -110,12 +89,6 @@
     <Compile Include="Simulation\SimulationSession.cs" />
     <Compile Include="Simulation\Simulator.cs" />
     <Compile Include="Prediction\TraceFileInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BZip2\BZip2.csproj">
-      <Project>{DB5FEADA-B97E-4EAA-A409-34C6F08DC0F1}</Project>
-      <Name>BZip2</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

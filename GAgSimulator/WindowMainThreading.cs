@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ComponentModel;
 using System.Threading;
-using System.Windows;
-using PredictionLogic;
-using PredictionLogic.Prediction;
 using PredictionLogic.SimulationStatistics;
 using PredictionLogic.Simulation;
-using BranchPredictionSimulator.SimulationResultStructures;
+using GAgSimulator.SimulationResultStructures;
 
-namespace BranchPredictionSimulator {
+namespace GAgSimulator {
 	public partial class WindowMain {
 		private Thread[] threads;
 		private int localThreadNumber = 1;
@@ -32,18 +25,12 @@ namespace BranchPredictionSimulator {
 				threads[i].Start();
 			}
 
-			foreach (TCPSimulatorProxy proxy in TCPConnections) {
-				if (proxy.Connected) {
-					proxy.startNewSession(session);
-				}
-			}
 
 			btnSimulate.IsEnabled = false;
 			btnAbort.IsEnabled = true;
 		}
 
 		public void proxyTaskRequestReceived(object sender, EventArgs e) {
-			TCPSimulatorProxy tcpSimulatorProxy = (TCPSimulatorProxy)sender;
 			SimulationInfo currentSimulation;
 			lock (simulationQueue) {
 				if (simulationQueue.Count > 0) {
@@ -53,18 +40,9 @@ namespace BranchPredictionSimulator {
 					return;
 				}
 			}
-			if (currentSimulation != null) {
-				tcpSimulatorProxy.sendSimulationTask(currentSimulation);
-			}
+
 		}
 
-		public void proxyResultsReceived(object sender, BenchmarkStatisticsResultReceivedEventArgs e) {
-			TCPSimulatorProxy proxy = (TCPSimulatorProxy)sender;
-
-			lock (simulationResultsDictionary) {
-				simulationResultsDictionary.setResultUsingDispatcher(this.Dispatcher, e.simulation.predictorInfo, e.simulation.benchmarkInfo, e.result);
-			}
-		}
 
 		private void performWork() {
 			try {
@@ -103,13 +81,6 @@ namespace BranchPredictionSimulator {
 				}
 			}
 
-			foreach (TCPSimulatorProxy proxy in TCPConnections) {
-				if (proxy.Connected) {
-					proxy.sendAbortSessionRequest();
-				}
-			}
-
-			displayedResults.Add(new ResultListMessage("Simulation aborted by user."));
 			btnAbort.IsEnabled = false;
 			btnSimulate.IsEnabled = true;
 		}
@@ -119,7 +90,6 @@ namespace BranchPredictionSimulator {
 		}
 
 		private void workFinished() {
-			displayedResults.Add(new ResultListMessage("Simulation completed."));
 			btnAbort.IsEnabled = false;
 			btnSimulate.IsEnabled = true;
 		}

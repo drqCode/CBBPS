@@ -1,0 +1,342 @@
+﻿<Window x:Class="GAgSimulator.WindowMain"
+        x:Name="RootWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:GAgSimulator"
+        xmlns:pred_external="clr-namespace:PredictionLogic.Prediction;assembly=PredictionLogic"
+        xmlns:pred_external_types="clr-namespace:PredictionLogic.Prediction.PredictorPropertyTypes;assembly=PredictionLogic"
+        xmlns:pred_statistics="clr-namespace:PredictionLogic.SimulationStatistics;assembly=PredictionLogic"
+        xmlns:pred_local="clr-namespace:GAgSimulator"        
+        xmlns:pred_local_results="clr-namespace:GAgSimulator.SimulationResultStructures"
+        xmlns:l="clr-namespace:GAgSimulator.Localization"
+        Title="{l:Text App_Title}" 
+        Height="820" Width="1260"
+        MinHeight="420" MinWidth="420"
+        Closing="RootWindow_Closing">
+    <Window.Resources>
+
+        <DataTemplate DataType="{x:Type pred_external:TraceFileInfo}">
+            <Grid Margin="2" MouseDown="TraceInfoDataTemplateDisplay_MouseDown">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Path=Filename}" VerticalAlignment="Center"/>
+                <CheckBox Grid.Column="1" VerticalAlignment="Center"
+                          IsChecked="{Binding Path=Selected, Mode=TwoWay}"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type pred_statistics:BenchmarkStatisticsResult}">
+            <StackPanel Orientation="Vertical" Margin="2">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Trace: " FontWeight="Bold" FontSize="14"/>
+                    <TextBlock Text="{Binding Path=Name}" FontWeight="Bold" FontSize="14"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <TextBlock Text="Total salturi: "/>
+                    <TextBlock Text="{Binding Path=NumberOfBranches}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <TextBlock Text="Predictii corecte: "/>
+                    <TextBlock Text="{Binding Path=NumberOfCorrectPredictions}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <TextBlock Text="Predictii incorecte: "/>
+                    <TextBlock Text="{Binding Path=NumberOfIncorrectPredictions}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <TextBlock Text="Acuratete (procente): " Foreground="DarkRed" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding Path=PercentAccuracy}" Foreground="DarkRed" FontWeight="Bold"/>
+                </StackPanel>
+
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type pred_statistics:StatisticsResult}">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Path=Name}" FontWeight="Bold" FontSize="16"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <TextBlock Text="Acuratete: " Foreground="DarkRed" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding Path=PercentAccuracy}" Foreground="DarkRed" FontWeight="Bold"/>
+                </StackPanel>
+
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type pred_local_results:ResultListMessage}">
+            <Grid HorizontalAlignment="Left" Margin="0, 0, 5, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text=">>>" TextWrapping="Wrap"
+                           Foreground="Black" FontSize="10"/>
+                <TextBlock Text="{Binding Path=Message}" 
+                           TextWrapping="Wrap" Grid.Column="1"
+                           Foreground="Black" FontSize="10"/>
+
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type pred_local_results:BenchmarkStatisticsCollection}">
+            <StackPanel>
+                <ListBox
+                     ItemsSource="{Binding}"
+                     ItemContainerStyle="{StaticResource appDefaultListBoxItemStyle}"
+                     Style="{StaticResource blankListBoxStyle}"
+                     HorizontalContentAlignment="Stretch"
+                     ScrollViewer.VerticalScrollBarVisibility="Visible"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                />
+
+                <ContentControl Content="{Binding Path=ArithmeticMean}"/>
+                <ContentControl Content="{Binding Path=FinalisationMessage}" 
+                                x:Name="message_fin"
+                                Visibility="Collapsed"
+                                Margin="0, 2, 0, 2"/>
+
+            </StackPanel>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=FinalisationMessage.IsVisible}" Value="True">
+                    <Setter TargetName="message_fin" Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+
+        <DataTemplate x:Key="PredictorTypeDataTemplate">
+            <HeaderedContentControl x:Name="hcc_main">
+                <HeaderedContentControl.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Path=DisplayName}">
+                            <TextBlock.ToolTip>
+                                <TextBlock Text="{Binding Path=ToolTipInfo}"/>
+                            </TextBlock.ToolTip>
+                        </TextBlock>
+                    </Grid>
+                </HeaderedContentControl.Header>
+                <ListBox
+                         ItemsSource="{Binding Path=PredictorProperties}"
+                         ItemContainerStyle="{StaticResource appDefaultListBoxItemStyle}"
+                         Style="{StaticResource blankListBoxStyle}"
+                         HorizontalContentAlignment="Stretch"
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         />
+            </HeaderedContentControl>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=IsSelected,
+                                                            RelativeSource={
+                                                            RelativeSource Mode=FindAncestor,
+                                                                            AncestorType={x:Type ListBoxItem}
+                                                            }
+                                                            }" Value="True">
+                    <Setter TargetName="hcc_main" Property="Selector.IsSelected" Value="True"/>
+                </DataTrigger>
+
+            </DataTemplate.Triggers>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type pred_external_types:PredictorInt32Property}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding Path=DisplayName, Mode=OneWay}"
+                           VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Text="{Binding Path=BindingString, Mode=TwoWay}"
+                         VerticalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type pred_external_types:PredictorUInt32Property}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding Path=DisplayName, Mode=OneWay}"
+                           VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Text="{Binding Path=BindingString, Mode=TwoWay}"
+                         VerticalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type pred_external_types:PredictorBoolProperty}">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="{Binding Path=DisplayName, Mode=OneWay}"
+                           VerticalAlignment="Center" Margin="0, 0, 0, 3"/>
+                <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                    <CheckBox IsChecked="{Binding Path=BindingNotTaken, Mode=TwoWay}"
+                              VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
+                    <TextBlock Text="{Binding Path=TextFalse, Mode=OneWay}"
+                               VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
+                    <CheckBox IsChecked="{Binding Path=BindingTaken, Mode=TwoWay}"
+                              VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
+                    <TextBlock Text="{Binding Path=TextTrue, Mode=OneWay}"
+                               VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
+
+
+                </StackPanel>
+
+
+            </StackPanel>
+        </DataTemplate>
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="225" />
+            <ColumnDefinition Width="421*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="211" />
+            <RowDefinition />
+            <RowDefinition Height="71" />
+            <RowDefinition Height="28" />
+        </Grid.RowDefinitions>
+
+        <Menu Grid.ColumnSpan="2">
+            <MenuItem Header="{l:Text Menu_File}">
+                <MenuItem Header="{l:Text Menu_Options}" Click="MenuItemOptions_Click"/>
+                <MenuItem Header="{l:Text Menu_Exit}" Click="MenuItemExit_Click"/>
+            </MenuItem>
+            <MenuItem Header="{l:Text Menu_Help}">
+                <MenuItem Header="{l:Text Menu_About}" Click="MenuItemAbout_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <TabControl Grid.Row="1" Margin="3,3,3,5" Grid.RowSpan="2">
+            <TabItem Header="Trace-uri">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="labelStanford" Grid.ColumnSpan="2"
+                             ItemsSource="{Binding}"
+                             ItemContainerStyle="{StaticResource appDefaultListBoxItemStyle}"
+                             HorizontalContentAlignment="Stretch"
+                             ScrollViewer.VerticalScrollBarVisibility="Visible"
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,10"
+                             />
+                    <Button Grid.Row="1" Margin="0, 3, 1.5, 0"
+                            Click="selectAllStanford_Click" >
+                        <TextBlock Text="{l:Text MainWindow_SelectAll}" TextWrapping="Wrap" TextAlignment="Center"/>
+                    </Button>
+                    <Button Grid.Row="1" Grid.Column="1" Margin="1.5, 3, 0, 0"
+                            Click="selectNoneStanford_Click">
+                        <TextBlock Text="{l:Text MainWindow_SelectNone}" TextWrapping="Wrap" TextAlignment="Center"/>
+                    </Button>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <!--predictors and properties-->
+        <ScrollViewer Grid.Row="3"
+                          HorizontalScrollBarVisibility="Disabled" 
+                          VerticalScrollBarVisibility="Auto" Margin="0,10,0,0">
+            <StackPanel>
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                    </Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                        <Setter Property="TextAlignment" Value="Left" />
+                    </Style>
+                </StackPanel.Resources>
+
+                <ListBox x:Name="PredictorTypesListBox"
+                         ItemsSource="{Binding}"
+                         ItemContainerStyle="{StaticResource appDefaultListBoxItemStyle}"
+                         ItemTemplate="{StaticResource PredictorTypeDataTemplate}"
+                         Style="{StaticResource blankListBoxStyle}"
+                         HorizontalContentAlignment="Stretch" Background="#FFF5ABAB"                         
+                         />
+            </StackPanel>
+        </ScrollViewer>
+
+        <Button x:Name="btnSimulate" Grid.Row="4" Margin="1.966,2,2.034,23.989" Click="simulate_Click" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.178"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <StackPanel Orientation="Vertical">
+                <TextBlock FontSize="16" HorizontalAlignment="Center"
+                           Text="{l:Text MainWindow_Simulate}" Height="23.274"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="btnAbort" Grid.Row="4" Margin="2,48,2,2" Click="abort_Click" FontSize="13" IsEnabled="False"
+                Content="{l:Text MainWindow_Abort}" Grid.RowSpan="2"/>
+
+        <Grid Grid.Column="1" Grid.Row="1" Grid.RowSpan="5">
+            <TabControl Margin="3">
+                <TabItem Header="{l:Text MainWindow_Results}" x:Name="ResultsTab"  IsSelected="True">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="32" />
+                        </Grid.RowDefinitions>
+                        <Border Margin="0, 0, 0, 2"
+                                Background="{StaticResource WindowBackgroundBrush}"
+                                BorderBrush="{StaticResource SolidBorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="2">
+                            <ScrollViewer>
+                                <ListBox x:Name="lbResults"
+                                     ItemsSource="{Binding}"
+                                     ItemContainerStyle="{StaticResource appDefaultListBoxItemStyle}"
+                                     Style="{StaticResource blankListBoxStyle}"
+                                     HorizontalContentAlignment="Stretch"
+                                     ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                     ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                     />
+                            </ScrollViewer>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="{l:Text MainWindow_Charts}">
+                    <local:Chart x:Name="MainChart" />
+                </TabItem>
+            </TabControl>
+
+            <Button x:Name="btnClearResults" Click="btnClearResults_Click"
+                    HorizontalAlignment="Right" VerticalAlignment="Top"
+                    Margin="0, 2, 5, 0" Padding="3, 1"
+                    Content="{l:Text MainWindow_ClearResults}">
+                <Button.Style>
+                    <Style>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=ResultsTab, Path=IsSelected}" Value="False">
+                                <Setter Property="Button.Visibility" Value="Hidden"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+        </Grid>
+
+    </Grid>
+</Window>

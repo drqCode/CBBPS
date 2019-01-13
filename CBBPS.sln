@@ -1,13 +1,11 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BranchPredictionSimulator", "BranchPredictionSimulator\BranchPredictionSimulator.csproj", "{60952920-21DE-4DAF-AFCF-E8B94B8D2DE2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BranchPredictionSimulatorServer", "BranchPredictionSimulatorServer\BranchPredictionSimulatorServer.csproj", "{3F449655-FB74-46AC-9EBF-99D000883388}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PredictionLogic", "PredictionLogic\PredictionLogic.csproj", "{B4582561-B6E2-4A91-9375-01693DD4C66F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BZip2", "BZip2\BZip2.csproj", "{DB5FEADA-B97E-4EAA-A409-34C6F08DC0F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GAgSimulator", "GAgSimulator\GAgSimulator.csproj", "{A65D5569-3E2A-448A-A867-D00DF6631C80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,22 +15,6 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{60952920-21DE-4DAF-AFCF-E8B94B8D2DE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{60952920-21DE-4DAF-AFCF-E8B94B8D2DE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{60952920-21DE-4DAF-AFCF-E8B94B8D2DE2}.Debug|x64.ActiveCfg = Debug|x64
-		{60952920-21DE-4DAF-AFCF-E8B94B8D2DE2}.Debug|x64.Build.0 = Debug|x64
-		{60952920-21DE-4DAF-AFCF-E8B94B8D2DE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{60952920-21DE-4DAF-AFCF-E8B94B8D2DE2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{60952920-21DE-4DAF-AFCF-E8B94B8D2DE2}.Release|x64.ActiveCfg = Release|x64
-		{60952920-21DE-4DAF-AFCF-E8B94B8D2DE2}.Release|x64.Build.0 = Release|x64
-		{3F449655-FB74-46AC-9EBF-99D000883388}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F449655-FB74-46AC-9EBF-99D000883388}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F449655-FB74-46AC-9EBF-99D000883388}.Debug|x64.ActiveCfg = Debug|x64
-		{3F449655-FB74-46AC-9EBF-99D000883388}.Debug|x64.Build.0 = Debug|x64
-		{3F449655-FB74-46AC-9EBF-99D000883388}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F449655-FB74-46AC-9EBF-99D000883388}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3F449655-FB74-46AC-9EBF-99D000883388}.Release|x64.ActiveCfg = Release|x64
-		{3F449655-FB74-46AC-9EBF-99D000883388}.Release|x64.Build.0 = Release|x64
 		{B4582561-B6E2-4A91-9375-01693DD4C66F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B4582561-B6E2-4A91-9375-01693DD4C66F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4582561-B6E2-4A91-9375-01693DD4C66F}.Debug|x64.ActiveCfg = Debug|x64
@@ -41,14 +23,14 @@ Global
 		{B4582561-B6E2-4A91-9375-01693DD4C66F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B4582561-B6E2-4A91-9375-01693DD4C66F}.Release|x64.ActiveCfg = Release|x64
 		{B4582561-B6E2-4A91-9375-01693DD4C66F}.Release|x64.Build.0 = Release|x64
-		{DB5FEADA-B97E-4EAA-A409-34C6F08DC0F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DB5FEADA-B97E-4EAA-A409-34C6F08DC0F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DB5FEADA-B97E-4EAA-A409-34C6F08DC0F1}.Debug|x64.ActiveCfg = Debug|x64
-		{DB5FEADA-B97E-4EAA-A409-34C6F08DC0F1}.Debug|x64.Build.0 = Debug|x64
-		{DB5FEADA-B97E-4EAA-A409-34C6F08DC0F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DB5FEADA-B97E-4EAA-A409-34C6F08DC0F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DB5FEADA-B97E-4EAA-A409-34C6F08DC0F1}.Release|x64.ActiveCfg = Release|x64
-		{DB5FEADA-B97E-4EAA-A409-34C6F08DC0F1}.Release|x64.Build.0 = Release|x64
+		{A65D5569-3E2A-448A-A867-D00DF6631C80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A65D5569-3E2A-448A-A867-D00DF6631C80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A65D5569-3E2A-448A-A867-D00DF6631C80}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A65D5569-3E2A-448A-A867-D00DF6631C80}.Debug|x64.Build.0 = Debug|Any CPU
+		{A65D5569-3E2A-448A-A867-D00DF6631C80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A65D5569-3E2A-448A-A867-D00DF6631C80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A65D5569-3E2A-448A-A867-D00DF6631C80}.Release|x64.ActiveCfg = Release|Any CPU
+		{A65D5569-3E2A-448A-A867-D00DF6631C80}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

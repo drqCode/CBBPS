@@ -6,11 +6,11 @@ using System.Collections.ObjectModel;
 using PredictionLogic.Prediction;
 using PredictionLogic.Prediction.BenchmarksAndReaders;
 using PredictionLogic.Simulation;
-using BranchPredictionSimulator.SimulationResultStructures;
+using GAgSimulator.SimulationResultStructures;
 
-namespace BranchPredictionSimulator {
+namespace GAgSimulator {
 	public partial class WindowMain {
-		private List<TraceFileInfo> stanfordTraces = new List<TraceFileInfo>();
+		private List<TraceFileInfo> traces = new List<TraceFileInfo>();
 
 		public ObservableCollection<object> displayedResults = new ObservableCollection<object>();
 		public Queue<SimulationInfo> simulationQueue = new Queue<SimulationInfo>();
@@ -21,15 +21,15 @@ namespace BranchPredictionSimulator {
 
 		private void initTraces() {
 			foreach (string filename in TraceFileInfo.stanfordFilenames) {
-				stanfordTraces.Add(new TraceFileInfo { Filename = filename, Selected = false });
+				traces.Add(new TraceFileInfo { Filename = filename, Selected = false });
 			}
 
-			labelStanford.DataContext = stanfordTraces;
+
+			labelStanford.DataContext = traces;
 		}
 
 		private void initPredictorTypeList() {
-			predictorTypeList.Add(new PredictorTypeInfo(typeof(GAg), "GAg"));
-
+			predictorTypeList.Add(new PredictorTypeInfo(typeof(GAg), "Configuratie GAg"));
 			PredictorTypesListBox.DataContext = predictorTypeList;
 			PredictorTypesListBox.SelectedIndex = 0;
 		}
@@ -87,31 +87,17 @@ namespace BranchPredictionSimulator {
 		private void simulate_Click(object sender, RoutedEventArgs e) {
 			List<PredictorInfo> predictorRequests;
 
-			if (!this.AppOptions.IsPredictorCompareMode) {
-				PredictorTypeInfo predictorType = (PredictorTypeInfo)PredictorTypesListBox.SelectedItem;
-				predictorRequests = getPredictorRequests(predictorType);
-			}
-			else {
-				predictorRequests = new List<PredictorInfo>();
-				foreach (PredictorTypeInfo predictorTypeInfo in predictorTypeList) {
-					if (predictorTypeInfo.IsChecked) {
-						predictorRequests.AddRange(getPredictorRequests(predictorTypeInfo));
-					}
-				}
-			}
+			PredictorTypeInfo predictorType = (PredictorTypeInfo)PredictorTypesListBox.SelectedItem;
+			predictorRequests = getPredictorRequests(predictorType);
 
 			// Stanford
-			var stanfordTraceQuery = from trace in stanfordTraces
+			var stanfordTraceQuery = from trace in traces
 									 where trace.Selected
 									 select trace.Filename;
 
 			int numberOfSelectedTraces = stanfordTraceQuery.Count();
 			if (numberOfSelectedTraces == 0) {
-				displayedResults.Add(new ResultListMessage("(no traces selected)"));
-				return;
-			}
-			if (predictorRequests.Count == 0) {
-				displayedResults.Add(new ResultListMessage("(no predictors selected)"));
+				displayedResults.Add(new ResultListMessage("(nu ati selectat niciun trace)"));
 				return;
 			}
 
@@ -130,12 +116,8 @@ namespace BranchPredictionSimulator {
 				}
 			}
 
-			displayedResults.Add(new ResultListMessage("Starting " + simulationQueue.Count + " simulations on " + predictorRequests.Count + " predictor versions"));
-
 			foreach (PredictorInfo predictorInfo in predictorRequests) {
 				BenchmarkStatisticsCollection benchmarkStatisticsCollection = simulationResultsDictionary.addPredictor(predictorInfo);
-
-				displayedResults.Add(new ResultListMessage("Simulation using " + predictorInfo.description));
 				displayedResults.Add(benchmarkStatisticsCollection);
 			}
 
